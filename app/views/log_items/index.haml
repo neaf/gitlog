@@ -1,7 +1,18 @@
-%h1 All commits
+%ul.repositories
+  %li= link_to "All", url(:index)
+  - LogItem.all.map(&:repository).uniq.each do |r|
+    %li{ class: params[:repository] == r ? "active" : nil }
+      = link_to r, url(:repository, repository: r)
+
+%h1
+  - if params[:repository]
+    #{ params[:repository] } commits
+  - else
+    All commits
 
 - @log_items.only(:repository).group.each do |r|
-  %h2= r["repository"]
+  - unless params[:repository]
+    %h2= r["repository"]
   %ul.commits
     - r["group"].each do |i|
       - i.commits.each do |c|
