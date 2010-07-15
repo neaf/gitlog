@@ -11,7 +11,7 @@ class Commit
     commit = self.new.tap do |c|
       c.author = payload["author"]["name"]
       c.message = payload["message"]
-      c.timestamp = DateTime.parse(payload["timestamp"])
+      c.timestamp = payload["timestamp"]
     end
   end
 end

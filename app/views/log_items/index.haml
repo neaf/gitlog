@@ -1,0 +1,13 @@
+%h1 All commits
+
+- @log_items.only(:repository).group.each do |r|
+  %h2= r["repository"]
+  %ul.commits
+    - r["group"].each do |i|
+      - i.commits.each do |c|
+        %li
+          %h2
+            %strong= c.author
+            \-
+            = c.timestamp.strftime("%m/%d/%Y @ %I:%M%p")
+          %p.message= c.message
