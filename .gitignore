@@ -1,0 +1,12 @@
+.DS_Store
+log/**/*
+tmp/**/*
+bin/*
+vendor/gems/*
+!vendor/gems/cache/
+.sass-cache/*
+config/database.rb
+public/stylesheets/main.css
+Capfile
+config/deploy.rb
+.bundle
