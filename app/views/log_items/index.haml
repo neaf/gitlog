@@ -6,7 +6,7 @@
     - r["group"].each do |i|
       - i.commits.each do |c|
         %li
-          %h2
+          %h3
             %strong= c.author
             \-
             = c.timestamp.strftime("%m/%d/%Y @ %I:%M%p")
