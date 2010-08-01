@@ -10,11 +10,11 @@
   - else
     All commits
 
-- @log_items.desc(:created_at).only(:repository).group.each do |r|
+- @log_items.only(:repository).group.each do |r|
   - unless params[:repository]
     %h2= r["repository"]
   %ul.commits
-    - r["group"].each do |i|
+    - r["group"].sort { |x, y| y.created_at <=> x.created_at }.each do |i|
       - i.commits.desc(:timestamp).each do |c|
         %li
           %h3
